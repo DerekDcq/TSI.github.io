@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>title</title>
+  <link rel="stylesheet" href="/dist/output.css">
+  <link rel="stylesheet" href="/dist/gallery.css">
+  <script src="script.js" defer></script>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.17/dist/js/splide.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.17/dist/css/splide.min.css">
+</head>
+
+<body>
+
+
+
+
+  <div x-data="{ isOpen: false }" class="sticky top-0 flex justify-between py-4 px-[1rem] lg:px-[2rem] z-10 bg-gray-900"
+    id="navBar">
+    <button href="index.html">
+      <img src="../images/logoblanc.png" class="w-16" id="logoNav">
+    </button>
+
+    <div class="flex items-center justify-between">
+      <button x-data="{ open: false }" @click="isOpen = !isOpen" type="submit"
+        class="flex items-center  space-x-2 focus:outline-none lg:hidden">
+
+
+        <div class="w-8 flex items-center justify-center relative">
+          <span x-bind:class="isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'"
+            class="transform transition w-full h-[3px] bg-white absolute"></span>
+
+          <span x-bind:class="isOpen ? 'opacity-0 translate-x-3' : 'opacity-100'"
+            class="transform transition w-full h-[3px] bg-white absolute"></span>
+
+          <span x-bind:class="isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'"
+            class="transform transition w-full h-[3px] bg-white absolute"></span>
+        </div>
+      </button>
+
+      <div class="hidden space-x-10 lg:inline-block ">
+        <a id="nav" href="index.html" class="text-lg text-white font-medium ">Accueil</a>
+        <a id="nav" href="contact.html" class="text-lg text-white font-medium ">Nous contacter</a>
+        <a id="nav" href="gallerie.html" class="text-lg text-white font-medium ">Gallerie</a>
+
+      </div>
+
+      <div class="mobile-navbar">
+        <div class="fixed left-0 w-full bg-cover h-[100vh] p-5 bg-black/90 top-16" x-show="isOpen"
+          @click.away=" isOpen = false" x-transition.scale.origin.right.duration.400ms.opacity>
+          <div id="navLinks" class="flex flex-col space-y-12">
+            <a id="nav" href="index.html" class="text-lg text-white font-medium">Accueil</a>
+            <a id="nav" href="contact.html" class="text-lg text-white font-medium">Nous contacter</a>
+            <a id="nav" href="gallerie.html" class="text-lg text-white font-medium">Gallerie</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <button id="close">
+    <div id="overlay" class="fixed hidden z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-60"></div>
+  </button>
+
+  <div id="dialog"
+    class="hidden fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] lg:w-[75vw]  rounded-md px-8 py-6  drop-shadow-lg ">
+
+
+    <div class="pb-3">
+      <section id="image-carousel" class="splide" aria-label="Beautiful Images">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <img src="images/imagemase.jpg" alt="">
+            </li>
+            <li class="splide__slide">
+              <img src="images/imagemase.jpg" alt="">
+            </li>
+            <li class="splide__slide">
+              <img src="images/imagemase.jpg" alt="">
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+
+
+  <button id="close2">
+    <div id="overlay2" class="fixed hidden z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-60"></div>
+  </button>
+
+  <div id="dialog2"
+    class="hidden fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] lg:w-[75vw] rounded-md px-8 py-6  drop-shadow-lg ">
+
+
+    <div class="pb-3">
+      <section id="image-carousel2" class="splide" aria-label="Beautiful Images">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <img src="images/imagemase.jpg" alt="">
+            </li>
+            <li class="splide__slide">
+              <img src="images/imagemase.jpg" alt="">
+            </li>
+            <li class="splide__slide">
+              <img src="images/imagemase.jpg" alt="">
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+
+  </div>
+
+
+  <button id="close3">
+    <div id="overlay3" class="fixed hidden z-40 w-screen h-screen inset-0 bg-gray-900 bg-opacity-60"></div>
+  </button>
+  
+  <div id="dialog3"
+    class="hidden fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] lg:w-[75vw] rounded-md px-8 py-6  drop-shadow-lg ">
+
+
+    <div class="pb-3">
+      <section id="image-carousel3" class="splide" aria-label="Beautiful Images">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <img src="images/imagemase.jpg" alt="">
+            </li>
+            <li class="splide__slide">
+              <img src="images/imagemase.jpg" alt="">
+            </li>
+            <li class="splide__slide">
+              <img src="images/imagemase.jpg" alt="">
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+
+
+  <section>
+    <div class="px-4 pt-8 mx-auto max-w-screen-xl flex items-center">
+      <div class="max-w-xl mx-auto text-center">
+        <h1 class="text-gray-600 font-extrabold text-3xl" id="gallerie">
+          Visitez notre gallerie.
+          <strong class="font-extrabold text-gray-900 sm:block">
+            Explorez notre métier.
+          </strong>
+        </h1>
+
+        <p class="mt-4 sm:leading-relaxed sm:text-xl text-gray-600" id="textGallerie">
+          Visionnez ci-dessous, une série de photo et d'images tirées de nos réalisations.
+        </p>
+
+        <span class="inline-block h-1 w-20 rounded bg-gray-900 mt-8 " id="lineGallerie"></span>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <div class="flex flex-col lg:flex-row  pt-12 pb-20">
+    <button id="open" href="" class="py-6 px-6 flex flex-col lg:px-12 overflow-hidden ">
+      <img class="object-cover w-full h-48 rounded-t-xl" src="images/reseauair.jpg" alt="" />
+
+      <div class="p-4 bg-gray-900 rounded-b-xl shadow-3xl">
+        <p class="text-xs text-gray-500">Réseaux de fluides</p>
+
+        <h3 class="text-sm text-white">Conception de réseaux de fluides industriels.</h3>
+
+        <p class="mt-1 text-xs text-gray-500">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum nobis
+          aliquid accusamus? Sint, sequi voluptas.</p>
+      </div>
+    </button>
+
+
+    <button id="open2" href="" class="py-6 px-6 flex flex-col lg:px-12 overflow-hidden ">
+      <img class="object-cover w-full h-48 rounded-t-xl" src="images/reseauair.jpg" alt="" />
+
+      <div class="p-4 bg-gray-900 rounded-b-xl shadow-3xl">
+        <p class="text-xs text-gray-500">Réseaux de fluides</p>
+
+        <h3 class="text-sm text-white">Conception de réseaux de fluides industriels.</h3>
+
+        <p class="mt-1 text-xs text-gray-500">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum nobis
+          aliquid accusamus? Sint, sequi voluptas.</p>
+      </div>
+    </button>
+
+    <button id="open3" href="" class="py-6 px-6 flex flex-col lg:px-12 overflow-hidden ">
+      <img class="object-cover w-full h-48 rounded-t-xl" src="images/reseauair.jpg" alt="" />
+
+      <div class="p-4 bg-gray-900 rounded-b-xl shadow-3xl">
+        <p class="text-xs text-gray-500">Réseaux de fluides</p>
+
+        <h3 class="text-sm text-white">Conception de réseaux de fluides industriels.</h3>
+
+        <p class="mt-1 text-xs text-gray-500">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum nobis
+          aliquid accusamus? Sint, sequi voluptas.</p>
+      </div>
+    </button>
+
+  </div>
+
+
+
+
+
+
+
+
+  <footer class="text-white bg-gray-900 lg:grid lg:grid-cols-5 z-10">
+    <aside class="hidden lg:relative lg:col-span-2 lg:block">
+      <img class="absolute inset-0 object-cover w-full h-full" src="./images/imagemase.jpg" alt="Comic Graphic" />
+    </aside>
+
+    <div class="px-4 py-16 sm:px-6 lg:px-8 lg:col-span-3">
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+        <div>
+          <p class="font-medium">
+            <span class="text-xs tracking-widest uppercase">
+              Téléphone
+            </span>
+
+            <a class="block text-2xl sm:text-3xl hover:opacity-75" href="">
+              0677196938
+            </a>
+          </p>
+
+
+
+
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div class="mt-6 pt-8 border-t-2 border-gray-800">
+              <p class="font-medium">Production</p>
+
+              <nav class="flex flex-col mt-4 text-sm text-gray-300 space-y-2">
+                <a class="hover:opacity-75" href=""> Gallerie </a>
+                <a class="hover:opacity-75" href=""> Conceptions </a>
+                <a class="hover:opacity-75" href=""> Réalisations </a>
+                <a class="hover:opacity-75" href=""> Certifications </a>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-12 mt-2 lg:mt-[5.7rem] border-t-2 border-gray-800">
+          <div class="text-sm text-gray-300 sm:items-center sm:justify-between sm:flex">
+            <div class="flex space-x-3">
+              <a class="hover:opacity-75" href=""> Termes & Conditions </a>
+              <a class="hover:opacity-75" href=""> Nous contacter </a>
+            </div>
+
+            <p class="mt-4 sm:mt-0">
+              &copy; 2022 SARL TSI.<br>Tous droits réservés
+            </p>
+          </div>
+
+          <img src="./images/logoblanc.png" class="w-24 mt-8">
+        </div>
+      </div>
+  </footer>
+
+
+
+  <script>
+    var openButton = document.querySelector('#open');
+    var dialog = document.querySelector('#dialog');
+    var closeButton = document.querySelector('#close');
+    var overlay = document.querySelector('#overlay');
+
+    
+    openButton.addEventListener('click', function () {
+      dialog.classList.remove('hidden');
+      overlay.classList.remove('hidden');
+    });
+
+   
+    closeButton.addEventListener('click', function () {
+      dialog.classList.add('hidden');
+      overlay.classList.add('hidden');
+    });
+  </script>
+
+
+  <script>
+    var openButton2 = document.querySelector('#open2');
+    var dialog2 = document.querySelector('#dialog2');
+    var closeButton2 = document.querySelector('#close2');
+    var overlay2 = document.querySelector('#overlay2');
+
+   
+    openButton2.addEventListener('click', function () {
+      dialog2.classList.remove('hidden');
+      overlay2.classList.remove('hidden');
+    });
+
+
+    closeButton2.addEventListener('click', function () {
+      dialog2.classList.add('hidden');
+      overlay2.classList.add('hidden');
+    });
+  </script>
+
+
+  <script>
+    var openButton3 = document.querySelector('#open3');
+    var dialog3 = document.querySelector('#dialog3');
+    var closeButton3 = document.querySelector('#close3');
+    var overlay3 = document.querySelector('#overlay3');
+
+  
+    openButton3.addEventListener('click', function () {
+      dialog3.classList.remove('hidden');
+      overlay3.classList.remove('hidden');
+    });
+
+  
+    closeButton3.addEventListener('click', function () {
+      dialog3.classList.add('hidden');
+      overlay3.classList.add('hidden');
+    });
+  </script>
+
+
+  <script>
+    new Splide('#image-carousel', {
+      rewind: true,
+      perPage: 1,
+    }).mount();
+  </script>
+
+  <script>
+    new Splide('#image-carousel2', {
+      rewind: true,
+      perPage: 1,
+    }).mount();
+  </script>
+
+  <script>
+    new Splide('#image-carousel3', {
+      rewind: true,
+      perPage: 1,
+    }).mount();
+  </script>
+
+  <script>
+    ScrollReveal().reveal('#gallerie', { duration: 1000, distance: '150%' });
+    ScrollReveal().reveal('#textGallerie', { duration: 1000, distance: '150%' });
+    ScrollReveal().reveal('#lineGallerie', { duration: 1000, distance: '150%' });
+    ScrollReveal().reveal('#open', { duration: 1000, distance: '150%' });
+    ScrollReveal().reveal('#open2', { duration: 1000, distance: '150%' });
+    ScrollReveal().reveal('#open3', { duration: 1000, distance: '150%' });
+  </script>
+</body>
+
+</html>

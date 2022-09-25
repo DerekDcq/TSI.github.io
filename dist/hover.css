@@ -1,0 +1,16 @@
+
+
+
+
+
+#bgHero{
+  border-radius: 0% 0% 50% 50% / 10% 10% 5% 5%;
+}
+
+.splide__slide img {
+  height: 5rem;
+  width: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+

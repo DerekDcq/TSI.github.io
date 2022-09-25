@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>title</title>
+    <link rel="stylesheet" href="/dist/output.css">
+    <link rel="stylesheet" href="/dist/hover.css">
+    <script src="./src/script.js" defer></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+              (function() {
+                  emailjs.init('mzwOU0XXmhZ8h6IfX');
+              })();
+          </script>
+          <script type="text/javascript">
+              window.onload = function() {
+                  document.getElementById('contact-form').addEventListener('submit', function(event) {
+                      event.preventDefault();
+
+                      this.contact_number.value = Math.random() * 100000 | 0;
+                     
+                      emailjs.sendForm('service_26bp6xl', 'template_3mi2a3d', this)
+                          .then(function() {
+                              console.log('SUCCESS!');
+                              alert("Votre message a bien été pris en compte");
+                          }, function(error) {
+                              console.log('FAILED...', error);
+                              alert("Une erreur est surevenue");
+                          });
+                  });
+              }
+          </script>
+</head>
+
+
+
+<body class="bg-gray-100">
+  <div x-data="{ isOpen: false }" class="sticky top-0 flex justify-between py-4 px-[1rem] lg:px-[2rem] z-10 bg-gray-900"
+  id="navBar">
+  <button href="index.html">
+      <img src="../images/logoblanc.png" class="w-16" id="logoNav" href="index.html">
+  </button>
+
+  <div class="flex items-center justify-between">
+    <button x-data="{ open: false }"
+    @click="isOpen = !isOpen" type="submit"
+    class="flex items-center  space-x-2 focus:outline-none lg:hidden">
+
+
+      <div class="w-8 flex items-center justify-center relative">
+        <span x-bind:class="isOpen ? 'translate-y-0 rotate-45' : '-translate-y-2'"
+              class="transform transition w-full h-[3px] bg-white absolute"></span>
+        
+        <span x-bind:class="isOpen ? 'opacity-0 translate-x-3' : 'opacity-100'"
+              class="transform transition w-full h-[3px] bg-white absolute"></span>
+        
+        <span x-bind:class="isOpen ? 'translate-y-0 -rotate-45' : 'translate-y-2'"
+              class="transform transition w-full h-[3px] bg-white absolute"></span>
+      </div>
+    </button>
+
+      <div class="hidden space-x-10 lg:inline-block ">
+          <a id="nav" href="index.html" class="text-lg text-white font-medium ">Accueil</a>
+          <a id="nav" href="contact.html" class="text-lg text-white font-medium ">Nous contacter</a>
+          <a id="nav" href="gallerie.html" class="text-lg text-white font-medium ">Gallerie</a>
+          
+      </div>
+
+      <div class="mobile-navbar">
+          <div class="fixed left-0 w-full bg-cover h-[100vh] p-5 bg-black/90 top-16 lg:hidden"
+              x-show="isOpen" @click.away=" isOpen = false" x-transition.scale.origin.right.duration.400ms.opacity>
+              <div id="navLinks" class="flex flex-col space-y-12 justify-center text-center">
+                  <a id="nav" href="index.html" class="text-lg text-white font-medium">Accueil</a>
+                  <a id="nav" href="contact.html" class="text-lg text-white font-medium">Nous contacter</a>
+                  <a id="nav" href="gallerie.html" class="text-lg text-white font-medium">Gallerie</a>
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+        <section class="text-gray-600 px-4 relative ">
+          <div class="container py-12  flex flex-col  lg:flex-row ">
+
+            
+            <form class=" bg-gray-100 flex flex-col w-full px-6" id="contact-form">
+              <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">Formulaire de contact</h2>
+              <p class="leading-relaxed mb-5 text-gray-600">Si vous avez la moindre question, contactez nous ! </p>
+              <div class="relative mb-4">
+                <input type="hidden" name="contact_number">
+                <label for="name" class="leading-7 text-sm text-gray-600">Nom</label>
+                <input type="text" id="name" name="user_name" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              </div>
+              <div class="relative mb-4">
+                <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+                <input type="email" id="email" name="user_email" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+              </div>
+              <div class="relative mb-4">
+                <label for="message" class="leading-7 text-sm text-gray-600">Message</label>
+                <textarea id="message" name="message" class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+              </div>
+              <button type="submit" value="send" class="text-white bg-gray-900 border-0 py-2 px-6 hover:bg-gray-800 rounded text-lg">Envoyer</button>
+              <p class="text-xs text-gray-500 pb-5 mt-3">Nos équipes font leurs possible pour vous répondre au plus vite.</p>
+            </form>
+            <div class="w-full  flex relative"id="map">
+              <iframe width="100%" height="100%" class="px-3 lg:px-0 rounded-lg" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d662299.286405787!2d2.593992372636179!3d49.57687834553642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e83f6628627d33%3A0x29705ae8ec4279b2!2sSARL%20T.S.I!5e0!3m2!1sfr!2sfr!4v1663240786228!5m2!1sfr!2sfr" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" ></iframe>
+              
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+        
+
+
+
+
+        <footer class="text-white bg-gray-900 lg:grid lg:grid-cols-5">
+            <aside class="hidden lg:relative lg:col-span-2 lg:block">
+              <img
+                class="absolute inset-0 object-cover w-full h-full"
+                src="./images/imagemase.jpg"
+                alt="Comic Graphic"
+              />
+            </aside>
+          
+            <div class="px-4 py-16 sm:px-6 lg:px-8 lg:col-span-3">
+              <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+                <div>
+                  <p class="font-medium">
+                    <span class="text-xs tracking-widest uppercase">
+                      Téléphone
+                    </span>
+          
+                    <a class="block text-2xl sm:text-3xl hover:opacity-75" href="">
+                      0677196938
+                    </a>
+                  </p>
+          
+       
+          
+                  
+          
+                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div class="mt-6 pt-8 border-t-2 border-gray-800">
+                    <p class="font-medium">Production</p>
+          
+                    <nav class="flex flex-col mt-4 text-sm text-gray-300 space-y-2">
+                      <a class="hover:opacity-75" href=""> Gallerie </a>
+                      <a class="hover:opacity-75" href=""> Conceptions </a>
+                      <a class="hover:opacity-75" href=""> Réalisations </a>
+                      <a class="hover:opacity-75" href=""> Certifications </a>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+          
+              <div class="pt-12 mt-2 lg:mt-[5.7rem] border-t-2 border-gray-800">
+                <div class="text-sm text-gray-300 sm:items-center sm:justify-between sm:flex">
+                  <div class="flex space-x-3">
+                    <a class="hover:opacity-75" href=""> Termes & Conditions </a>
+                    <a class="hover:opacity-75" href=""> Nous contacter </a>
+                  </div>
+          
+                  <p class="mt-4 sm:mt-0">
+                    &copy; 2022 SARL TSI.<br>Tous droits réservés
+                  </p>
+                </div>
+    
+                <img src="./images/logoblanc.png" class="w-24 mt-8">
+              </div>
+            </div>
+          </footer>
+
+
+
+          <script>
+            ScrollReveal().reveal('#contact-form', { duration: 1000, distance: '150%', origin: 'left' });
+            ScrollReveal().reveal('#map', { duration: 1000, distance: '150%', origin: 'right' });
+          </script>
+          
+          
+</body>
+</html>
